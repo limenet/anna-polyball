@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Anna @ Polyball</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.countdown/2.1.0/jquery.countdown.min.js"></script>
+    <style>
+        .container {padding-top: 40px;}
+        .bg-status-grey {background-color: #9E9E9E;}
+        .bg-status-green {background-color: #4CAF50;}
+        .bg-status-orange {background-color: #FF9800;}
+        .bg-status-red {background-color: #F44336;}
+
+        .text-status-grey {color: #616161;}
+        .text-status-green {color: #388E3C;}
+        .text-status-orange {color: #F57C00;}
+        .text-status-red {color: #D32F2F;}
+        .text-monospace {font-family: "Source Code Pro", "Consolas", monospace;}
+
+        h1{font-size: 200px;}
+        h2{font-size: 100px;}
+        h3{font-size: 50px;}
+        body {font-family: "Source Sans Pro", "Helvetica", "Arial", sans-serif;}
+        </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h1 id="countdown"></h1>
+                <h2></h2>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        jQuery(document).ready(function($) {
+            var dDay = '2015-11-28 19:00';
+            var diffDays1=(function(){
+                var oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
+                var secondDate = new Date(dDay);
+                var firstDate = new Date();
+                 return Math.round(Math.abs((firstDate.getTime() - secondDate.getTime())/(oneDay)));
+                })();
+            var color = '';
+            if (diffDays1 > 5) {
+                color = 'green';
+            } else if (diffDays1 > 3) {
+                color = 'orange';
+            } else {
+                color = 'red';
+            }
+            console.log(color, diffDays1);
+            $('body').addClass('bg-status-'+color);
+            $('h1,h2').addClass('text-status-'+color);
+
+            $("h1").countdown(dDay, function(event) {
+                $(this).text(
+                    event.strftime('%D days')
+                );
+            });
+            $("h2").countdown(dDay, function(event) {
+                $(this).text(
+                    event.strftime('%H hours and %M minutes')
+                );
+            });
+        });
+    </script>
+</body>
+</html>

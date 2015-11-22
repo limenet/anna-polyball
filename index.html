@@ -28,8 +28,9 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-center">
-                <h1 id="countdown"></h1>
+                <h1></h1>
                 <h2></h2>
+                <h3>Until Anna needs "maa &amp; kleid"</h3>
             </div>
         </div>
     </div>
@@ -52,7 +53,7 @@
             }
             console.log(color, diffDays1);
             $('body').addClass('bg-status-'+color);
-            $('h1,h2').addClass('text-status-'+color);
+            $('h1,h2,h3').addClass('text-status-'+color);
 
             $("h1").countdown(dDay, function(event) {
                 $(this).text(
